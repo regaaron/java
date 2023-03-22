@@ -28,7 +28,7 @@ public class Botones extends JFrame implements ActionListener {
         boton2.addActionListener(this); //espera de evento
         
         
-        boton3 = new JButton("3");
+        boton3 = new JButton("Salir");
         boton3.setFont(fuente);
         boton3.setBounds(210, 100, 90, 30);
         add(boton3);
@@ -60,7 +60,7 @@ public class Botones extends JFrame implements ActionListener {
                 etiqueta1.setText("has precionado el boton 2");
         }
           if(e.getSource()==boton3){
-                etiqueta1.setText("has precionado el boton 3");
+                System.exit(0);
         }
     }
 
