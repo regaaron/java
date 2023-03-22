@@ -42,7 +42,7 @@ public class Dibujar extends JFrame{
         g.fillArc(100,120,80,40,270,-90);
         
         g.fillArc(185,120,80,40,0,-270);
-        
+        setLocationRelativeTo(null);
     }
     
     public static void main(String[] args) {

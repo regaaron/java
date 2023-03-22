@@ -63,6 +63,8 @@ public class Tarea extends JFrame{
         g.fillRect(70, 390, 20,30);
         g.setColor(Color.YELLOW);
         g.fillRect(72, 405, 2, 2);
+        
+        setLocationRelativeTo(null);
     }
     public static void main(String[] args) {
         Tarea app = new Tarea();
