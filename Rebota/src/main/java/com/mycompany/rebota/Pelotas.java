@@ -11,8 +11,8 @@ import java.awt.Color;
  * @author aaron
  */
 public class Pelotas {
-      final static int ANCHO =512;
-    final static int ALTO = 384;
+      final static int ANCHO =1000;
+    final static int ALTO = 600;
     final static int DIAMETRO= 20;
     float x,y;
 
@@ -63,14 +63,18 @@ private float[] elasticCollision(float[] v1, float[] v2) {
             float dy = y - p[i].y;
             float distance = (float) Math.sqrt(dx * dx + dy * dy);
             
-            if (distance < DIAMETRO) {
+            if (distance <=DIAMETRO) {
+                
                 vx=-vx;
                 vy=-vy;
                 p[i].vx=-vx;
                 p[i].vy=-vy;
+                color= new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+                p[i].color= new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
 
+                 /*
                 // Las pelotas chocan, cambiamos su dirección
-                /*float angle = (float) Math.atan2(dy, dx);
+                float angle = (float) Math.atan2(dy, dx);
                 float sin = (float) Math.sin(angle);
                 float cos = (float) Math.cos(angle);
                 

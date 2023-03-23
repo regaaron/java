@@ -11,10 +11,10 @@ import javax.swing.*;
 
 
 public class Rebota extends JComponent{
-private final static int ANCHO =512;
-private final static int ALTO = 384;
+private final static int ANCHO =1000;
+private final static int ALTO = 600;
 private final static int DIAMETRO= 20;
-Pelotas [] p = new Pelotas[100]; 
+Pelotas [] p = new Pelotas[50]; 
 
 public void cicloPrincipalJuego() throws Exception{
     long tiempoViego = System.nanoTime();
