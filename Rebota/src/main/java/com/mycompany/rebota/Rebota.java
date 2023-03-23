@@ -14,7 +14,7 @@ public class Rebota extends JComponent{
 private final static int ANCHO =512;
 private final static int ALTO = 384;
 private final static int DIAMETRO= 20;
-Pelotas [] p = new Pelotas[20]; 
+Pelotas [] p = new Pelotas[100]; 
 
 public void cicloPrincipalJuego() throws Exception{
     long tiempoViego = System.nanoTime();
@@ -23,7 +23,7 @@ public void cicloPrincipalJuego() throws Exception{
         float dt = (tiempoNuevo - tiempoViego)/1000000000f;
         tiempoViego=tiempoNuevo;
         for(int i=0; i<p.length;i++){
-            p[i].Fisica(dt);
+            p[i].Fisica(dt,p);
             
         }
         dibuja();
