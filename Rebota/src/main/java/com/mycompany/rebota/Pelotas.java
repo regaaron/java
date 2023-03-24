@@ -46,14 +46,27 @@ private float[] elasticCollision(float[] v1, float[] v2) {
     return result;
 }
     
-    public void Fisica(float dt, Pelotas []p){
-       
+    public void Fisica(float dt, Pelotas []p,int ybarra,int xbarra){
+        
         this.x += this.vx*dt;
           y +=vy*dt;
     
-        if(vx<0 && x<=0 || vx>0 && x+ DIAMETRO >=ANCHO)
+        if(vx<0 && x<=0 )
            vx=-vx;
-    
+        
+        if(vx>0 && x+ DIAMETRO >=ANCHO){
+             x=(int)(Math.random()*500+1);
+            y=(int)(Math.random()*350+1);
+        }
+        
+        if(x+DIAMETRO>=xbarra&&x+DIAMETRO<=xbarra+30 && y>=ybarra&&y<=ybarra+70){
+            vx=-vx;
+            vy=-vy;
+            System.out.println(x+", "+y+","+xbarra+","+ybarra);
+        }
+            
+        
+        
          if(vy<0 && y<=0 || vy>0 && y+DIAMETRO >= ALTO)
             vy=-vy;
           for (int i = 0; i < p.length; i++) {
