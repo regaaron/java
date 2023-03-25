@@ -15,19 +15,17 @@ public class Pelotas {
     final static int ALTO = 600;
     final static int DIAMETRO= 20;
     float x,y;
-
-    @Override
-    public String toString() {
-        return "Pelotas{" + "x=" + x + ", y=" + y + ", vx=" + vx + ", vy=" + vy + ", color=" + color + '}';
-    }
     float vx,vy;
+    int c1;
+    int c2;
     Color color ;
     Pelotas(){
-        x=(int)(Math.random()*500+1);
+        x=ANCHO/2;//(int)(Math.random()*500+1);
         y=(int)(Math.random()*350+1);
         vx=(int)(Math.random()*(300-150+1)+150);
         vy=(int)(Math.random()*(400-150+1)+150);
         color= new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+        c1=c2=0;
 
     }
     private float[] rotate(float vx, float vy, float sin, float cos) {
@@ -46,21 +44,37 @@ private float[] elasticCollision(float[] v1, float[] v2) {
     return result;
 }
     
-    public void Fisica(float dt, Pelotas []p,int ybarra,int xbarra){
+    public void Fisica(float dt, Pelotas []p,Barra b1,Barra b2){
         
         this.x += this.vx*dt;
           y +=vy*dt;
     
-        if(vx<0 && x<=0 )
-           vx=-vx;
+        if(vx<0 && x<=0 ){
+            x=ANCHO/2;//(int)(Math.random()*500+1);
+            y=(int)(Math.random()*ALTO+1);
+            vx=-vx;
+            c1++;
+            System.out.println("c1="+c1);
+        }
+           
         
         if(vx>0 && x+ DIAMETRO >=ANCHO){
-             x=(int)(Math.random()*500+1);
-            y=(int)(Math.random()*350+1);
+             x=ANCHO/2;//(int)(Math.random()*500+1);
+            y=(int)(Math.random()*ALTO+1);
             vx=-vx;
+            c2++;
+            System.out.println("c2="+c2);
+
         }
         
-        if(x+DIAMETRO>=xbarra&&x+DIAMETRO<=xbarra+30 && y>=ybarra&&y<=ybarra+70){
+        
+        if(x+DIAMETRO>b1.x&&x+DIAMETRO<b1.x+b1.ANCHO && y+DIAMETRO>b1.y&&y<b1.y+b1.ALTO){
+            vx=-vx;
+            vy=-vy;
+            //System.out.println(x+", "+y+","+xbarra+","+ybarra);
+        }
+        
+         if(x>b2.x&&x<b2.x+b2.ANCHO && y>b2.y&&y<b2.y+b2.ALTO){
             vx=-vx;
             vy=-vy;
             //System.out.println(x+", "+y+","+xbarra+","+ybarra);
