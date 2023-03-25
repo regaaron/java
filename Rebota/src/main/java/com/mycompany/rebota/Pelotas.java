@@ -57,12 +57,13 @@ private float[] elasticCollision(float[] v1, float[] v2) {
         if(vx>0 && x+ DIAMETRO >=ANCHO){
              x=(int)(Math.random()*500+1);
             y=(int)(Math.random()*350+1);
+            vx=-vx;
         }
         
         if(x+DIAMETRO>=xbarra&&x+DIAMETRO<=xbarra+30 && y>=ybarra&&y<=ybarra+70){
             vx=-vx;
             vy=-vy;
-            System.out.println(x+", "+y+","+xbarra+","+ybarra);
+            //System.out.println(x+", "+y+","+xbarra+","+ybarra);
         }
             
         

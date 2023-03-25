@@ -21,7 +21,7 @@ private final static int BANCHO=30;
 private int xbarra=ANCHO-BANCHO;
 private int ybarra=ALTO-BALTO;
 private boolean arriba,abajo,izquierda,derecha;
-Pelotas [] p = new Pelotas[10]; 
+Pelotas [] p = new Pelotas[1]; 
 
 public void cicloPrincipalJuego() throws Exception{
     long tiempoViego = System.nanoTime();
