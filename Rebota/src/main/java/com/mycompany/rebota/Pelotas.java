@@ -11,13 +11,13 @@ import java.awt.Color;
  * @author aaron
  */
 public class Pelotas {
-      final static int ANCHO =1000;
+    final static int ANCHO =1000;
     final static int ALTO = 600;
     final static int DIAMETRO= 20;
     float x,y;
     float vx,vy;
-    int c1;
-    int c2;
+    static int c1;
+     static int c2;
     Color color ;
     Pelotas(){
         x=ANCHO/2;//(int)(Math.random()*500+1);
