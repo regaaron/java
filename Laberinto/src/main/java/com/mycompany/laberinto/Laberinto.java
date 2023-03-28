@@ -328,7 +328,9 @@ int pixel=25;
                 {1, 1, 0, 1, 1, 1, 1, 1, 1, 1}
             };
             matriz = lab;
+            System.out.println("hola mundo");
         }
+        
         if (i == 3) {
             int[][] lab = {
                 {1, 3, 1, 1, 1, 1, 1, 1, 1, 1},
