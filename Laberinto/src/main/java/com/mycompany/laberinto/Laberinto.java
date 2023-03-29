@@ -23,7 +23,7 @@ import javax.swing.Timer;
  * @author aaron
  */
 public class Laberinto extends JComponent {
-
+ 
     Color color;
     int[][] matriz; //matriz con la que se va atrabajar
     /*
@@ -317,8 +317,11 @@ public class Laberinto extends JComponent {
         });
 
         jf.setResizable(false);//no dejamos que cambie el tamanio
+      
         Laberinto laberinto1 = new Laberinto();
         jf.getContentPane().add(laberinto1);
+        BackgroundSound backgroundSound = new BackgroundSound();
+        // Reproducir el sonido de fondo
         jf.pack();
         jf.setVisible(true); //se hace visible 
 
