@@ -45,7 +45,8 @@ public class Laberinto extends JComponent {
     int ANCHO, ALTO;
     int pixel = 25;
     int [] fin;
-   int m = (int) (Math.random() * (3));
+   //int m = (int) (Math.random() * (3));
+    int m=0;
    public void inicializar(){
        matriz = ObtenerMatriz(m);//regresa una matriz
 
@@ -162,8 +163,13 @@ public class Laberinto extends JComponent {
                 //checamos espacion libre de ser asi cambiamos posicion, libereamos espacio y repintamos
                 if(pos[0]==fin[0]&&pos[1]==fin[1]){
                     //JOptionPane.showMessageDialog(null, "Felicidades");
-                    m=(int)(Math.random()*3);
+                    m++;//(int)(Math.random()*3);
+                    if(m==4){
+                        JOptionPane.showMessageDialog(null,"Felicidades");
+                        System.exit(0);
+                    }
                     inicializar();
+                    
                 }
                 //
             }
