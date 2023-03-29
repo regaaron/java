@@ -24,7 +24,7 @@ import javax.swing.Timer;
  */
 public class Laberinto extends JComponent {
 
-    Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
+    Color color;
     int[][] matriz; //matriz con la que se va atrabajar
     /*
     {
@@ -49,7 +49,7 @@ public class Laberinto extends JComponent {
     int m=0;
    public void inicializar(){
        matriz = ObtenerMatriz(m);//regresa una matriz
-
+        color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
         pos = ObtenerPosicion(); //obtenemos posicion 0 para y y 1 para x
         fin=ObtenerFin();
         ANCHO = pixel * matriz[1].length;
