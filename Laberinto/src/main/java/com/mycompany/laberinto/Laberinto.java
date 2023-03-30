@@ -26,19 +26,9 @@ public class Laberinto extends JComponent {
  
     Color color;
     int[][] matriz; //matriz con la que se va atrabajar
-    /*
-    {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-        {0, 0, 2, 0, 0, 1, 1, 0, 0, 1},
-        {0, 0, 1, 0, 1, 0, 0, 1, 1, 0},
-        {0, 0, 1, 1, 0, 1, 0, 1, 1, 0},
-        {1, 1, 0, 0, 1, 0, 1, 0, 0, 1},
-        {1, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 0, 1, 0, 1, 0, 1, 1, 0, 1},
-        {0, 0, 1, 0, 1, 0, 1, 0, 1, 0}};
-     */
+    
+ 
+     
     int[] pos; //vector de posiciones de la pelota 0 para y .... 1 para x
     boolean arriba, abajo, izq, der; //para comprobar las teclas precionadas
     Timer timer; //timer para delay 
@@ -47,6 +37,8 @@ public class Laberinto extends JComponent {
     int [] fin;
    //int m = (int) (Math.random() * (3));
     int m=0;
+    
+    
    public void inicializar(){
        matriz = ObtenerMatriz(m);//regresa una matriz
         color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
@@ -56,10 +48,10 @@ public class Laberinto extends JComponent {
         ALTO = pixel * matriz.length;
         setPreferredSize(new Dimension(ANCHO, ALTO)); //tamanio de la pantalla
    }
+   
     public Laberinto() {
         inicializar();
 
-        
         //logica para teclado y un delay
         timer = new Timer(100, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -164,7 +156,7 @@ public class Laberinto extends JComponent {
                 if(pos[0]==fin[0]&&pos[1]==fin[1]){
                     //JOptionPane.showMessageDialog(null, "Felicidades");
                     m++;//(int)(Math.random()*3);
-                    if(m==4){
+                    if(m==6){
                         JOptionPane.showMessageDialog(null,"Felicidades");
                         System.exit(0);
                     }
@@ -215,14 +207,6 @@ public class Laberinto extends JComponent {
     }
 
     //metodo para imprimir patriz
-    public void imprimeMatriz() {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + ",");
-            }
-            System.out.println("");
-        }
-    }
 
     public void paint(Graphics g) {
         //color de fondo y ponemos el fondo
@@ -289,6 +273,27 @@ public class Laberinto extends JComponent {
     }
 
     //corre todo el tiempo
+
+    public static void main(String[] args) {
+        JOptionPane.showMessageDialog(null, "BIenvenido"
+                + "\nEmpezemos"); //mensaje
+        JFrame jf = new JFrame("Laberinto");
+        jf.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        jf.setResizable(false);//no dejamos que cambie el tamanio
+      
+        Laberinto laberinto1 = new Laberinto();
+        jf.getContentPane().add(laberinto1);
+        //BackgroundSound backgroundSound = new BackgroundSound();
+        // Reproducir el sonido de fondo
+        jf.pack();
+        jf.setVisible(true); //se hace visible 
+
+    }
     public void cicloPrincipalJuego() throws Exception {
         while (true) {
 
@@ -306,27 +311,6 @@ public class Laberinto extends JComponent {
         });
     }
 
-    public static void main(String[] args) {
-        JOptionPane.showMessageDialog(null, "BIenvenido"
-                + "\nEmpezemos"); //mensaje
-        JFrame jf = new JFrame("Laberinto");
-        jf.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-
-        jf.setResizable(false);//no dejamos que cambie el tamanio
-      
-        Laberinto laberinto1 = new Laberinto();
-        jf.getContentPane().add(laberinto1);
-        BackgroundSound backgroundSound = new BackgroundSound();
-        // Reproducir el sonido de fondo
-        jf.pack();
-        jf.setVisible(true); //se hace visible 
-
-    }
-
     //recorre la matriz en busca del 2 que es nuestro personaje para obtener la posicion en x y y
     private int[] ObtenerPosicion() {
         int[] posicionObjeto = new int[2];
@@ -341,7 +325,8 @@ public class Laberinto extends JComponent {
         }
         return posicionObjeto;
     }
-      private int[] ObtenerFin() {
+
+    private int[] ObtenerFin() {
         int[] posicionFin = new int[2];
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -433,8 +418,62 @@ public class Laberinto extends JComponent {
             matriz = lab;
             pixel = 50;
         }
-
+        
+        if(i==4){
+            
+        
+        int [][] lab = {
+            {0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1},
+            {1,0,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,1},
+            {1,0,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
+            {0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0},
+            {0,0,1,1,1,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0},
+            {0,0,0,1,0,1,0,0,0,0,1,0,1,0,1,0,0,1,0,0},
+            {1,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,0,1},
+            {1,0,0,1,0,1,0,0,0,0,1,1,0,0,1,0,0,1,0,1},
+            {1,0,0,1,0,1,0,0,0,0,1,1,1,0,1,0,0,1,0,1},
+            {1,0,0,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,0,1},
+            {1,0,0,0,0,1,0,0,0,0,1,0,0,1,1,0,0,1,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+            {1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+            {1,0,0,1,0,1,0,0,0,0,0,3,0,0,0,0,0,1,0,1},
+            {1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1},
+            };
+        matriz=lab;
+        pixel=25;
+        }
+        
+        if(i==5){
+             int [][]lab =
+        {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 1, 0, 1, 0, 1, 0, 1},
+        {0, 0, 2, 0, 0, 0, 0, 3, 0, 1},
+        {0, 0, 1, 0, 0, 0, 0, 1, 1, 0},
+        {0, 0, 1, 0, 0, 1, 0, 1, 1, 0},
+        {1, 1, 0, 0, 1, 0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 0, 1, 0, 1, 0, 1, 1, 0, 1},
+        {0, 2, 1, 0, 1, 0, 1, 0, 1, 0}};
+             matriz=lab;
+            pixel=50;
+        }
         return matriz;
     }
+    
+    public void imprimeMatriz() {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + ",");
+            }
+            System.out.println("");
+        }
+    }
+
 
 }
