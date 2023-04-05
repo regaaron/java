@@ -1,5 +1,6 @@
 package GameBoy;
 
+import entity.BackgroundSound;
 import entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -36,12 +37,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
     Player player = new Player(this, keyH);
+    BackgroundSound sound1 ;
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeigth));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+        sound1= new BackgroundSound();
     }
 
     public void startGameThread() {
