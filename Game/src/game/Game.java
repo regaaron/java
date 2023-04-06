@@ -64,6 +64,9 @@ public class Game extends JComponent {
         
         image.pintar(g);
         
+        image.setFrame((i++)/400);
+        
+        if(i++>=40000) i=0;
    
     }
     
@@ -104,10 +107,7 @@ public class Game extends JComponent {
             fisica(dt);
             dibuja();
             
-            if (tiempoNuevo - tiempoViejo > 2000000000) {
-            // Cambiar la imagen del sprite
-            image.setFrame((i++)/1000);
-        }
+            
         }
     }
 }
