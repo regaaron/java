@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import tile.TileManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,27 +25,34 @@ public class GamePanel extends JPanel implements Runnable {
     final int scale = 3;
 
     public final int tileSize = originTileSize * scale; //nuevo tamanio escalado
-    final int maxScreenCol = 16;
-    final int maxScrennRow = 12;
+    public final int maxScreenCol = 16;
+    public final int maxScrennRow = 12;
 
-    final int screenWidth = tileSize * maxScreenCol; //786
-    final int screenHeigth = tileSize * maxScrennRow;//576
+    public final int screenWidth = tileSize * maxScreenCol; //786
+    public final int screenHeigth = tileSize * maxScrennRow;//576
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
-
+  
     int FPS = 60;
-    Player player = new Player(this, keyH);
+    
+    public final int maxWorldCol=50;
+    public final int maxWorldRow=50;
+    public final int worldWigth =maxWorldCol*this.tileSize;
+    public final int worldHeigth=tileSize*maxScrennRow;
+    public Player player = new Player(this, keyH);
     BackgroundSound sound1 ;
+      TileManager tileM = new TileManager(this);
+    public collisionCheck cChecket = new collisionCheck(this);
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeigth));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        sound1= new BackgroundSound();
+        //sound1= new BackgroundSound();
     }
 
     public void startGameThread() {
@@ -111,7 +119,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        tileM.draw(g2);
         player.draw(g2);
+      
         g2.dispose();
     }
 

@@ -39,8 +39,8 @@ int img=0;
     
     public void paint(Graphics g){
         Graphics2D g2d=(Graphics2D)g;
-        g2d.setColor(Color.white);
-        g2d.fillRect(0, 0, 600,600);
+       // g2d.setColor(Color.black);
+        //g2d.fillRect(0, 0, 600,600);
         g2d.drawImage(image, cnt+posX,0+posY ,40,40,this);
         System.out.println("pintando: " +img);
     }
@@ -48,7 +48,7 @@ int img=0;
     public void run() {
        while(go){
            try{
-               thread.sleep(10);
+               thread.sleep(6);
            }catch(InterruptedException e){
                e.printStackTrace();
            }
