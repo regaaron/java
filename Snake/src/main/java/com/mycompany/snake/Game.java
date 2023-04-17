@@ -65,13 +65,13 @@ public class Game extends JPanel implements ActionListener{
      public void paint(Graphics g){
          super.paintComponent(g);
          g.setColor(Color.gray);
-        /*
+        
          for(int i=0;i<CUADRITOS_EN_PARALELO;i++){
              g.drawLine(0,CUADRITO_SIZE*i, PANTALLA, CUADRITO_SIZE*i);
              g.drawLine(CUADRITO_SIZE*i,0, CUADRITO_SIZE*i, PANTALLA);
 
          }
-*/
+
          g.setColor(Color.red);
          g.fillOval(comidax, comiday, CUADRITO_SIZE,CUADRITO_SIZE);
          g.setColor(Color.GREEN);
