@@ -8,7 +8,7 @@ public class gisanteHielo extends Gizantes{
     
     gisanteHielo(Plantas p,int x,int y){
         super(p,x,y);
-        cambiarFrame();
+        
     }
 
     @Override

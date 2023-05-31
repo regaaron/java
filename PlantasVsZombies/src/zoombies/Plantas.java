@@ -57,12 +57,11 @@ public class Plantas extends JComponent implements Runnable {
     CopyOnWriteArrayList<Soles> vectorSoles2= new CopyOnWriteArrayList<>(); //vector de soles
     
     ArrayList<Gizantes> vectorGisantes=new ArrayList<>();
-    CopyOnWriteArrayList<gisanteHielo> vectorGisantesHielo=new CopyOnWriteArrayList<>();
+    //CopyOnWriteArrayList<gisanteHielo> vectorGisantesHielo=new CopyOnWriteArrayList<>();
     
     CopyOnWriteArrayList<Nuez> vectorNuez=new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Balas> vectorBalas= new CopyOnWriteArrayList<>();
-    CopyOnWriteArrayList<DobleGizantes> vectorDobleGizantes = new CopyOnWriteArrayList<>();
-    CopyOnWriteArrayList<TripleGizantes> vectorTripleGizantes = new CopyOnWriteArrayList<>();
+   
     CopyOnWriteArrayList<Cactus> vectorCactus = new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Podadoras> vectorPodadoras = new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Mina> vectorminas = new CopyOnWriteArrayList<>();
@@ -269,38 +268,27 @@ public class Plantas extends JComponent implements Runnable {
                                 for (Gizantes gisante:vectorGisantes) {
                                    
                                     if (gisante.eliminar(evento)) {
+                      
                                         elementosAEliminar.add(gisante);
                                     }
                                 }
                                 
                                 vectorGisantes.removeAll(elementosAEliminar);
                                 
-                            
+                            /* 
                                 for(gisanteHielo gisanteHielo:vectorGisantesHielo){
                                     if(gisanteHielo.eliminar(evento)){
                                         vectorGisantesHielo.remove(gisanteHielo);
                                     }
                                 }
+                                */
                                 for(Nuez nuez:vectorNuez){
                                     if(nuez.eliminar(evento)){
                                         vectorNuez.remove(nuez);
                                     }
                                 }
-                                for(DobleGizantes doblegisante:vectorDobleGizantes){
-                                    if(doblegisante.eliminar(evento)){
-                                        vectorDobleGizantes.remove(doblegisante);
-                                    }
-                                }
-                                for(TripleGizantes triplegizante:vectorTripleGizantes){
-                                    if(triplegizante.eliminar(evento)){
-                                        vectorTripleGizantes.remove(triplegizante);
-                                    }
-                                }
-                                for(Cactus cactus :vectorCactus){
-                                    if(cactus.eliminar(evento)){
-                                        vectorCactus.remove(cactus);
-                                    }
-                                }
+                                
+                               
                                 for(NuezGrande nuezGrande :vectornuezgrande){
                                     if(nuezGrande.eliminar(evento)){
                                         vectornuezgrande.remove(nuezGrande);
@@ -398,15 +386,15 @@ public class Plantas extends JComponent implements Runnable {
     
     public void agregar(int option,int i,int j){
         switch(option){
-            case 0:vectorCactus.add(new Cactus(this, i, j));break;
-            case 1:vectorGisantesHielo.add(new gisanteHielo(this,i,j));break;//cereza
-            case 2:vectorGisantesHielo.add(new gisanteHielo(this,i,j));break;//chile
-            case 3:vectorGisantesHielo.add(new gisanteHielo(this,i,j));break;//congela
+            case 0:vectorGisantes.add(new Cactus(this, i, j));break;
+            case 1:vectorGisantes.add(new gisanteHielo(this,i,j));break;//cereza
+            case 2:vectorGisantes.add(new gisanteHielo(this,i,j));break;//chile
+            case 3:vectorGisantes.add(new gisanteHielo(this,i,j));break;//congela
             case 4:vectorGirazoles.add(new Girazol(this, i,j));break;
             case 5:vectorGisantes.add(new Gizantes(this, i,j));break;
-            case 6:vectorDobleGizantes.add(new DobleGizantes(this,i,j));break;
-            case 7:vectorTripleGizantes.add(new TripleGizantes(this, i, j));break;
-            case 8:vectorGisantesHielo.add(new gisanteHielo(this,i,j));break;//snow
+            case 6:vectorGisantes.add(new DobleGizantes(this,i,j));break;
+            case 7:vectorGisantes.add(new TripleGizantes(this, i, j));break;
+            case 8:vectorGisantes.add(new gisanteHielo(this,i,j));break;//snow
             case 9:vectorminas.add(new Mina(this,i,j));break;//hongopequeño
             case 10:vectorhongolargo.add(new HongoLargo(this,i,j));break;
             case 11:vectorhongonoche.add(new HongoNoche(this,i,j));break;
@@ -457,9 +445,8 @@ public class Plantas extends JComponent implements Runnable {
             vectorGisantes.removeAll(elementosAEliminar);
 
    
-       
-        
-        
+               
+        /* 
          for(gisanteHielo gisanteHielo:vectorGisantesHielo){
             gisanteHielo.draw(g2);
             if(gisanteHielo.vida<=0){
@@ -469,6 +456,7 @@ public class Plantas extends JComponent implements Runnable {
             }
 
         }
+        */
 
         for(Nuez nuez:vectorNuez){
             nuez.draw(g2);
@@ -479,30 +467,6 @@ public class Plantas extends JComponent implements Runnable {
             }
         }
         
-        for(DobleGizantes doblegizante:vectorDobleGizantes){
-            doblegizante.draw(g2);
-            if(doblegizante.vida <= 0){
-                vectorDobleGizantes.remove(doblegizante);
-                matriz[(doblegizante.y-extraArriba)/pixel][(doblegizante.x-extraArriba)/pixel-1] = 0;
-                
-            }
-        }
-        
-        for(TripleGizantes triplegizantes:vectorTripleGizantes){
-            triplegizantes.draw(g2);
-            if(triplegizantes.vida <= 0){
-                vectorTripleGizantes.remove(triplegizantes);
-                matriz[(triplegizantes.y-extraArriba)/pixel][(triplegizantes.x-extraArriba)/pixel-1] = 0;
-            }
-        }
-        
-        for(Cactus cactus:vectorCactus){
-            cactus.draw(g2);
-            if(cactus.vida <= 0){
-                vectorCactus.remove(cactus);
-                matriz[(cactus.y-extraArriba)/pixel][(cactus.x-extraArriba)/pixel-1] = 0;
-            }
-        }
         
         for(NuezGrande x:vectornuezgrande){
             x.draw(g2);

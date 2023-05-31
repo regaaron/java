@@ -1,35 +1,20 @@
 package zoombies;
-
-import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
 import javax.imageio.ImageIO;
 
-public class TripleGizantes {
-    int x,y,y2,y3,coordx,coordy;
-    BufferedImage [] imagenes = new BufferedImage[13];
-    BufferedImage gisantes=null;
-    Plantas p;
-    int frame;
-    int contador=0;
-    int contador2=0;
-    int vida=100;
-    int contador3=0;
-    CopyOnWriteArrayList<Balas> vectorBalas=new CopyOnWriteArrayList<>();
+public class TripleGizantes extends Gizantes{
+    int y2,y3,coordx,coordy;
     TripleGizantes(Plantas p,int x,int y){
+        super(p, x, y);
         this.coordx = x;
         this.coordy = y;
-        this.p=p;
-        this.x=p.extraxIzq+(x*p.pixel);
-        this.y=p.extraArriba+(y*p.pixel);
         this.y2= p.extraArriba + (y*p.pixel + p.pixel);
         this.y3= p.extraArriba + (y*p.pixel - p.pixel);
-        this.vectorBalas=p.vectorBalas;
+       
         cargarImagenes();
     }
 
+    @Override
     public void generarBala(){
         for(zombies zombie:p.vectorZombies){
             if((zombie.y>=this.y&&zombie.y<=this.y+p.pixel/2&&zombie.x<p.extraxIzq+(p.pixel*8)&&zombie.x>this.x+p.pixel/2) || (zombie.y>=this.y2&&zombie.y<=this.y2+p.pixel/2&&zombie.x<p.extraxIzq+(p.pixel*8)&&zombie.x>this.x+p.pixel/2) || (zombie.y>=this.y3&&zombie.y<=this.y3+p.pixel/2&&zombie.x<p.extraxIzq+(p.pixel*8)&&zombie.x>this.x+p.pixel/2)){
@@ -53,6 +38,7 @@ public class TripleGizantes {
         
     }
 
+    @Override
     public void cargarImagenes(){
         try {
             imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_00.png"));
@@ -76,65 +62,6 @@ public class TripleGizantes {
        
     }
 
-    public void draw(Graphics2D g2){
-        //cambiarFrame();
-        generarBala();
-        colision();
-        g2.drawImage(p.plantas[7], x,y,p.pixel,p.pixel,p);
-        g2.drawString(vida+"", x-20, y-20);
-        contador2++;
-    }
-
-    public void colision(){
-
-        for(zombies zombie:p.vectorZombies){
-            if((this.x)+p.pixel>=zombie.x&&(this.x)+p.pixel<=zombie.x+p.pixel&&this.y>=zombie.y&&this.y<=zombie.y+p.pixel/2){
-                contador3++;
-                if(contador3>=30*2){//30 frames y 10 son los segundos 
-                    vida-=25;
-                    contador3=0;
-                }
-                
-            }
-            
-        }
-    }
-
-    
-
-    public void cambiarFrame(){
-        switch(frame){
-            case 0: gisantes=imagenes[0]; break;
-            case 1: gisantes=imagenes[1]; break;
-            case 2: gisantes=imagenes[2]; break;
-            case 3: gisantes=imagenes[3]; break;
-            case 4: gisantes=imagenes[4]; break;
-            case 5: gisantes=imagenes[5]; break;
-            case 6: gisantes=imagenes[6]; break;
-            case 7: gisantes=imagenes[7]; break;
-            case 8: gisantes=imagenes[8]; break;
-            case 9: gisantes=imagenes[9]; break;
-            case 10: gisantes=imagenes[10]; break;
-            case 11: gisantes=imagenes[11]; break;
-            case 12: gisantes=imagenes[12]; break;
-            default: frame=0;
-        }
-
-        contador++;
-        if(contador==3){
-            frame++;
-            contador=0;
-        }
-        
-    }
-
-    public boolean eliminar(MouseEvent e){
-
-        if(e.getX()>=this.x&&e.getX()<=this.x+p.pixel&&e.getY()>=this.y&&e.getY()<=this.y+p.pixel){
-            return true;
-          }
-      
-      return false;
-    }
 }
 
+    

@@ -3,7 +3,7 @@ package zoombies;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+
 
 public class Base {
     Plantas p;//creamos un objeto planta para pasarle mucha informacion de referencia
