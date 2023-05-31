@@ -38,9 +38,6 @@ public class Toy {
     BackgroundSound sound1,sound2;
     boolean dentro=false;
     int numero;
-    
- 
-
     Toy(Examen pantalla, int ancho, int alto, String nombre, String tag) {
         this.pantalla = pantalla;
         Random rand = new Random();
@@ -67,7 +64,6 @@ public class Toy {
         }
 
     }
-
     public void dentro() {
         if (this.x > 100 - ancho / 2 && this.x < 202 && this.y > 440 - alto / 2 & this.y < 500) {
             if (tag == "Ropa"&&numero==pantalla.orden) {

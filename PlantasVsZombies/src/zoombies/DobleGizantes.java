@@ -125,9 +125,12 @@ public class DobleGizantes {
 
     public boolean eliminar(MouseEvent e){
 
-        if(e.getX()>=this.x&&e.getX()<=this.x+p.pixel&&e.getY()>=this.y&&e.getY()<=this.y+p.pixel){
+        if (e.getX() >= this.x && e.getX() <= this.x+p.pixel &&
+            e.getY() >= this.y && e.getY() <= this.y+p.pixel ){
+
             return true;
-          }
+          
+        }
       
       return false;
     }

@@ -39,7 +39,6 @@ public class Gizantes {
             }
             
         }
-        
     }
 
     public void addBala(){

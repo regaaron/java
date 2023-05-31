@@ -56,76 +56,81 @@ public class zombies {
         }
         //siempre y cuando no este colisionando osea no este comiendo escoje un frame
         //del zombie moviendoze y lo pone en zombie que es el que se muestra
-        if(!colision()){
-        switch(frame){
-            case 0: zoombie=imagenes[0]; break;
-            case 1: zoombie=imagenes[1]; break;
-            case 2: zoombie=imagenes[2]; break;
-            case 3: zoombie=imagenes[3]; break;
-            case 4: zoombie=imagenes[4]; break;
-            case 5: zoombie=imagenes[5]; break;
-            case 6: zoombie=imagenes[6]; break;
-            case 7: zoombie=imagenes[7]; break;
-            case 8: zoombie=imagenes[8]; break;
-            case 9: zoombie=imagenes[9]; break;
-            case 10: zoombie=imagenes[10]; break;
-            case 11: zoombie=imagenes[11]; break;
-            case 12: zoombie=imagenes[12]; break;
-            case 13: zoombie=imagenes[13]; break;
-            case 14: zoombie=imagenes[14]; break;
-            case 15: zoombie=imagenes[15]; break;
-            case 16: zoombie=imagenes[16]; break;
-            case 17: zoombie=imagenes[17]; break;
-            case 18: zoombie=imagenes[18]; break;
-            case 19: zoombie=imagenes[19]; break;
-            case 20: zoombie=imagenes[20]; break;
-            case 21: zoombie=imagenes[21]; break;
-            case 22: zoombie=imagenes[22]; break;
-            case 23: zoombie=imagenes[23]; break;
-            case 24: zoombie=imagenes[24]; break;
-            case 25: zoombie=imagenes[25]; break;
-            case 26: zoombie=imagenes[26]; break;
-            case 27: zoombie=imagenes[27]; break;
-            case 28: zoombie=imagenes[28]; break;
-            case 29: zoombie=imagenes[29]; break;
-            case 30: zoombie=imagenes[30]; break;
-            default: frame=0; //si el frame llega al final se reinicia para
-     //no salir del limite y no perder la referencia de las imagenes
-        }
-    }else{ //en caso de colision esta comiendo y selecciona una de comiendo
-        switch(frame){
-            case 0: zoombie=eat[0]; break;
-            case 1: zoombie=eat[1]; break;
-            case 2: zoombie=eat[2]; break;
-            case 3: zoombie=eat[3]; break;
-            case 4: zoombie=eat[4]; break;
-            case 5: zoombie=eat[5]; break;
-            case 6: zoombie=eat[6]; break;
-            case 7: zoombie=eat[7]; break;
-            case 8: zoombie=eat[8]; break;
-            case 9: zoombie=eat[9]; break;
-            case 10: zoombie=eat[10]; break;
-            case 11: zoombie=eat[11]; break;
-            case 12: zoombie=eat[12]; break;
-            case 13: zoombie=eat[13]; break;
-            case 14: zoombie=eat[14]; break;
-            case 15: zoombie=eat[15]; break;
-            case 16: zoombie=eat[16]; break;
-            case 17: zoombie=eat[17]; break;
-            case 18: zoombie=eat[18]; break;
-            case 19: zoombie=eat[19]; break;
-            case 20: zoombie=eat[20]; break;
-            default: frame=0;
-        }
-    }
-        //aunmentamos el frame para cambiar de imagen
-        cambio++;
-        if(cambio==3){
-            frame++;
-            cambio=1;
-        }
+        cambiarFrame();
         
        
+    }
+
+    public void cambiarFrame(){
+
+        if(!colision()){
+            switch(frame){
+                case 0: zoombie=imagenes[0]; break;
+                case 1: zoombie=imagenes[1]; break;
+                case 2: zoombie=imagenes[2]; break;
+                case 3: zoombie=imagenes[3]; break;
+                case 4: zoombie=imagenes[4]; break;
+                case 5: zoombie=imagenes[5]; break;
+                case 6: zoombie=imagenes[6]; break;
+                case 7: zoombie=imagenes[7]; break;
+                case 8: zoombie=imagenes[8]; break;
+                case 9: zoombie=imagenes[9]; break;
+                case 10: zoombie=imagenes[10]; break;
+                case 11: zoombie=imagenes[11]; break;
+                case 12: zoombie=imagenes[12]; break;
+                case 13: zoombie=imagenes[13]; break;
+                case 14: zoombie=imagenes[14]; break;
+                case 15: zoombie=imagenes[15]; break;
+                case 16: zoombie=imagenes[16]; break;
+                case 17: zoombie=imagenes[17]; break;
+                case 18: zoombie=imagenes[18]; break;
+                case 19: zoombie=imagenes[19]; break;
+                case 20: zoombie=imagenes[20]; break;
+                case 21: zoombie=imagenes[21]; break;
+                case 22: zoombie=imagenes[22]; break;
+                case 23: zoombie=imagenes[23]; break;
+                case 24: zoombie=imagenes[24]; break;
+                case 25: zoombie=imagenes[25]; break;
+                case 26: zoombie=imagenes[26]; break;
+                case 27: zoombie=imagenes[27]; break;
+                case 28: zoombie=imagenes[28]; break;
+                case 29: zoombie=imagenes[29]; break;
+                case 30: zoombie=imagenes[30]; break;
+                default: frame=0; //si el frame llega al final se reinicia para
+         //no salir del limite y no perder la referencia de las imagenes
+            }
+        }else{ //en caso de colision esta comiendo y selecciona una de comiendo
+            switch(frame){
+                case 0: zoombie=eat[0]; break;
+                case 1: zoombie=eat[1]; break;
+                case 2: zoombie=eat[2]; break;
+                case 3: zoombie=eat[3]; break;
+                case 4: zoombie=eat[4]; break;
+                case 5: zoombie=eat[5]; break;
+                case 6: zoombie=eat[6]; break;
+                case 7: zoombie=eat[7]; break;
+                case 8: zoombie=eat[8]; break;
+                case 9: zoombie=eat[9]; break;
+                case 10: zoombie=eat[10]; break;
+                case 11: zoombie=eat[11]; break;
+                case 12: zoombie=eat[12]; break;
+                case 13: zoombie=eat[13]; break;
+                case 14: zoombie=eat[14]; break;
+                case 15: zoombie=eat[15]; break;
+                case 16: zoombie=eat[16]; break;
+                case 17: zoombie=eat[17]; break;
+                case 18: zoombie=eat[18]; break;
+                case 19: zoombie=eat[19]; break;
+                case 20: zoombie=eat[20]; break;
+                default: frame=0;
+            }
+        }
+            //aunmentamos el frame para cambiar de imagen
+            cambio++;
+            if(cambio==3){
+                frame++;
+                cambio=1;
+            }
     }
 
     //colision
@@ -206,7 +211,7 @@ public class zombies {
             eat[18]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/plain_zombie_eat/frame_18.png"));
             eat[19]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/plain_zombie_eat/frame_19.png"));
             eat[20]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/plain_zombie_eat/frame_20.png"));
-        
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
