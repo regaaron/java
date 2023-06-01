@@ -1,5 +1,6 @@
 package zoombies;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -73,8 +74,15 @@ public class Gizantes {
         generarBala();
         colision();
         g2.drawImage(gisantes, x,y,p.pixel,p.pixel,p);
-        g2.drawString(vida+"", x-20, y-20);
+        //BarraVida(g2);
         contador2++;
+    }
+
+    public void BarraVida(Graphics2D g2){
+        g2.setColor(Color.RED);
+        g2.fillRect((int) x, (int) y - 20, p.pixel, 5);
+        g2.setColor(Color.GREEN);
+        g2.fillRect((int) x, (int) y - 20, (int) (p.pixel * (vida / 100.0)), 5);
     }
 
     public void colision(){

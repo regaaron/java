@@ -1,4 +1,6 @@
 package zoombies;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -151,5 +153,12 @@ public class NuezGrande extends Gizantes{
   @Override
   public void addBala() {
       
+  }
+  @Override
+  public void BarraVida(Graphics2D g2) {
+    g2.setColor(Color.RED);
+    g2.fillRect((int) x, (int) y - 20, p.pixel, 5);
+    g2.setColor(Color.GREEN);
+    g2.fillRect((int) x, (int) y - 20, (int) (p.pixel * (vida / 400.0)), 5);
   }
 }

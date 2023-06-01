@@ -427,9 +427,7 @@ public class Plantas extends JComponent implements Runnable {
             bala.draw(g2);
         }
 
-        if(over){
-            g2.drawImage(gameover,((screenX/2)-(pixel)-tiempo),(screenY/2)-tiempo,pixel+(tiempo*2),pixel+(2*tiempo),null);
-        }
+       
         for(zombies zombie: vectorZombies){
             zombie.draw(g2);
         }
@@ -445,7 +443,13 @@ public class Plantas extends JComponent implements Runnable {
         g.drawString("tiempo:", screenX-100, 20);
 
         g.drawString(tiempo2+"", screenX-100, 60);
-    
+        for(Gizantes gisante:vectorGisantes){
+            gisante.BarraVida(g2);
+        }
+
+        if(over){
+            g2.drawImage(gameover,((screenX/2)-(pixel)-tiempo),(screenY/2)-tiempo,pixel+(tiempo*2),pixel+(2*tiempo),null);
+        }
     }
     
     public static void main(String[] args) {

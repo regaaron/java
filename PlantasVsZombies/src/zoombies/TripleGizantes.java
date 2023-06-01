@@ -1,4 +1,5 @@
 package zoombies;
+import java.awt.Graphics2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -37,24 +38,33 @@ public class TripleGizantes extends Gizantes{
         }
         
     }
-
+    
+    @Override
+    public void draw(Graphics2D g2) {
+        cambiarFrame();
+        generarBala();
+        colision();
+        g2.drawImage(gisantes, x-40,y-30,(int)(p.pixel*1.8),(int)(p.pixel*1.8),p);
+        //BarraVida(g2);
+        contador2++;
+    }
     @Override
     public void cargarImagenes(){
         try {
-            imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_00.png"));
-            imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_01.png"));
-            imagenes[2]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_02.png"));
-            imagenes[3]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_03.png"));
-            imagenes[4]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_04.png"));
-            imagenes[5]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_05.png"));
-            imagenes[6]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_06.png"));
-            imagenes[7]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_07.png"));
-            imagenes[8]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_08.png"));
-            imagenes[9]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_09.png"));
-            imagenes[10]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_10.png"));
-            imagenes[11]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_11.png"));
-            imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_12.png"));
-           
+            
+            imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_01.png"));
+            imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_02.png"));
+            imagenes[2]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_03.png"));
+            imagenes[3]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_04.png"));
+            imagenes[4]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_05.png"));
+            imagenes[5]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_06.png"));
+            imagenes[6]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_07.png"));
+            imagenes[7]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_08.png"));
+            imagenes[8]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_09.png"));
+            imagenes[9]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_10.png"));
+            imagenes[10]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_11.png"));
+            imagenes[11]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_12.png"));
+            imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_13.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

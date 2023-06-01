@@ -15,8 +15,8 @@ public class Balas {
     BufferedImage bala=null,bala2 = null, bala3 = null;
     Plantas p;
     int n;
-    BackgroundSound danio=new BackgroundSound("/Java/resources/splat.wav");
-    BackgroundSound disparo=new BackgroundSound("/Java/resources/peashooter_attack.wav");
+    BackgroundSound danio=new BackgroundSound("/Java/resources/splat2.wav");
+    BackgroundSound disparo=new BackgroundSound("/Java/resources/peashooter_attack2.wav");
     Balas(Plantas p,int x,int y){
         this.p=p;
         this.x=x+p.pixel;
@@ -65,6 +65,12 @@ public class Balas {
             if((this.x+4.5)+p.pixel/4>=zombie.x&&(this.x+4.5)+p.pixel/4<=zombie.x+p.pixel&&this.y>=zombie.y&&this.y<=zombie.y+p.pixel){
                 danio.clip.start();
                 zombie.vida-=10;
+                if(n==2){
+                    zombie.realentiza=true;
+                    zombie.tiempoCongelado=0;
+                    zombie.velocidad=.375;
+                    
+                }
                 return true;
             }
             

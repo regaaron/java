@@ -1,5 +1,7 @@
 package zoombies;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -51,6 +53,14 @@ public class zombieCubeta extends zombies{
     }
 
     
+    @Override
+    public void BarraVida(Graphics2D g2) {
+        g2.setColor(Color.RED);
+        g2.fillRect((int) x, (int) y - 10, p.pixel, 5);
+        g2.setColor(Color.GREEN);
+        g2.fillRect((int) x, (int) y - 10, (int) (p.pixel * (vida / 200.0)), 5);
+        
+    }
     @Override
     public void cambiarFrame() {
         // TODO Auto-generated method stub
