@@ -1,10 +1,6 @@
 package zoombies;
 
-import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
 import javax.imageio.ImageIO;
 
 public class DobleGizantes extends Gizantes{

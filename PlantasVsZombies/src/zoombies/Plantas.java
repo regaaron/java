@@ -53,19 +53,14 @@ public class Plantas extends JComponent implements Runnable {
     boolean bpala = false; //boleano para saber si esta activa la pala
     CopyOnWriteArrayList<zombies> vectorZombies= new CopyOnWriteArrayList<>(); //vector de zombies
     CopyOnWriteArrayList<Soles> vectorSoles= new CopyOnWriteArrayList<>(); //vector de soles
-    CopyOnWriteArrayList<Girazol> vectorGirazoles = new CopyOnWriteArrayList<>();//vector de girazoles
+  
     CopyOnWriteArrayList<Soles> vectorSoles2= new CopyOnWriteArrayList<>(); //vector de soles
     
     ArrayList<Gizantes> vectorGisantes=new ArrayList<>();
-    //CopyOnWriteArrayList<gisanteHielo> vectorGisantesHielo=new CopyOnWriteArrayList<>();
-    
-    CopyOnWriteArrayList<Nuez> vectorNuez=new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Balas> vectorBalas= new CopyOnWriteArrayList<>();
-   
-    CopyOnWriteArrayList<Cactus> vectorCactus = new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Podadoras> vectorPodadoras = new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<Mina> vectorminas = new CopyOnWriteArrayList<>();
-    CopyOnWriteArrayList<NuezGrande> vectornuezgrande = new CopyOnWriteArrayList<>();
+  
     CopyOnWriteArrayList<HongoLargo> vectorhongolargo = new CopyOnWriteArrayList<>();
     CopyOnWriteArrayList<HongoNoche> vectorhongonoche = new CopyOnWriteArrayList<>();
     int tiempo=0;//cambiar a aumentar tamanio
@@ -251,19 +246,7 @@ public class Plantas extends JComponent implements Runnable {
                             //eliminando la planta
                             if (bpala) {
                                 matriz[j][i] = 0;
-                                for(Girazol girasol:vectorGirazoles){
-                                    if(girasol.eliminar(evento)){
-                                        vectorGirazoles.remove(girasol);
-                                    }
-                                }
-                                /* 
-                                for(Gizantes gisante:vectorGisantes){
-                                    if(gisante.eliminar(evento)){
-                                        vectorGisantes.remove(gisante);
-                                    }
-                                }
-                                */
-                                
+                                    
                                 ArrayList<Gizantes> elementosAEliminar = new ArrayList<>();
                                 for (Gizantes gisante:vectorGisantes) {
                                    
@@ -274,31 +257,8 @@ public class Plantas extends JComponent implements Runnable {
                                 }
                                 
                                 vectorGisantes.removeAll(elementosAEliminar);
-                                
-                            /* 
-                                for(gisanteHielo gisanteHielo:vectorGisantesHielo){
-                                    if(gisanteHielo.eliminar(evento)){
-                                        vectorGisantesHielo.remove(gisanteHielo);
-                                    }
-                                }
-                                */
-                                for(Nuez nuez:vectorNuez){
-                                    if(nuez.eliminar(evento)){
-                                        vectorNuez.remove(nuez);
-                                    }
-                                }
-                                
-                               
-                                for(NuezGrande nuezGrande :vectornuezgrande){
-                                    if(nuezGrande.eliminar(evento)){
-                                        vectornuezgrande.remove(nuezGrande);
-                                    }
-                                }
-                                for(Mina mina :vectorminas){
-                                    if(mina.eliminar(evento)){
-                                        vectorminas.remove(mina);
-                                    }
-                                }
+   
+                             
 
                             }
 
@@ -390,17 +350,17 @@ public class Plantas extends JComponent implements Runnable {
             case 1:vectorGisantes.add(new gisanteHielo(this,i,j));break;//cereza
             case 2:vectorGisantes.add(new gisanteHielo(this,i,j));break;//chile
             case 3:vectorGisantes.add(new gisanteHielo(this,i,j));break;//congela
-            case 4:vectorGirazoles.add(new Girazol(this, i,j));break;
+            case 4:vectorGisantes.add(new Girazol(this, i,j));break;
             case 5:vectorGisantes.add(new Gizantes(this, i,j));break;
             case 6:vectorGisantes.add(new DobleGizantes(this,i,j));break;
             case 7:vectorGisantes.add(new TripleGizantes(this, i, j));break;
             case 8:vectorGisantes.add(new gisanteHielo(this,i,j));break;//snow
-            case 9:vectorminas.add(new Mina(this,i,j));break;//hongopequeño
+            case 9:vectorGisantes.add(new Mina(this,i,j));break;//hongopequeño
             case 10:vectorhongolargo.add(new HongoLargo(this,i,j));break;
             case 11:vectorhongonoche.add(new HongoNoche(this,i,j));break;
-            case 12:vectorminas.add(new Mina(this,i,j));break;
-            case 13:vectorNuez.add(new Nuez(this, i,j));break;
-            case 14:vectornuezgrande.add(new NuezGrande(this,i,j));break;
+            case 12:vectorGisantes.add(new Mina(this,i,j));break;
+            case 13:vectorGisantes.add(new Nuez(this, i,j));break;
+            case 14:vectorGisantes.add(new NuezGrande(this,i,j));break;
         }
         matriz[j][i]=1;
 
@@ -425,14 +385,7 @@ public class Plantas extends JComponent implements Runnable {
         //conocido como for each
         
         //lo mismo pero con los zombies
-        for(Girazol girasol:vectorGirazoles){
-            girasol.draw(g2);
-            if(girasol.vida<=0){
-                vectorGirazoles.remove(girasol);
-                matriz[(girasol.y-extraArriba)/pixel][(girasol.x-extraDer)/pixel-1]=0;
-
-            }
-        }
+       
              ArrayList<Gizantes> elementosAEliminar = new ArrayList<>();
              for(Gizantes gisante:vectorGisantes){
                 gisante.draw(g2);
@@ -443,46 +396,7 @@ public class Plantas extends JComponent implements Runnable {
              }
 
             vectorGisantes.removeAll(elementosAEliminar);
-
-   
-               
-        /* 
-         for(gisanteHielo gisanteHielo:vectorGisantesHielo){
-            gisanteHielo.draw(g2);
-            if(gisanteHielo.vida<=0){
-                vectorGisantesHielo.remove(gisanteHielo);
-               
-                matriz[(gisanteHielo.y-extraArriba)/pixel][(gisanteHielo.x-extraDer)/pixel-1]=0;
-            }
-
-        }
-        */
-
-        for(Nuez nuez:vectorNuez){
-            nuez.draw(g2);
-            if(nuez.vida<=0){
-                vectorNuez.remove(nuez);
-                matriz[(nuez.y-extraArriba)/pixel][(nuez.x-extraDer)/pixel-1]=0;
-
-            }
-        }
         
-        
-        for(NuezGrande x:vectornuezgrande){
-            x.draw(g2);
-            if(x.vida <= 0){
-                vectornuezgrande.remove(x);
-                matriz[(x.y-extraArriba)/pixel][(x.x-extraArriba)/pixel-1] = 0;
-            }
-        }
-        
-        for(Mina x:vectorminas){
-            x.draw(g2);
-            if(x.vida <= 0){
-                vectorminas.remove(x);
-                matriz[(x.y-extraArriba)/pixel][(x.x-extraArriba)/pixel-1] = 0;
-            }
-        }
         
         for(HongoLargo x:vectorhongolargo){
             x.draw(g2);

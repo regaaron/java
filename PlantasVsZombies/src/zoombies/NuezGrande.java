@@ -1,52 +1,26 @@
 package zoombies;
-
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class NuezGrande {
-    int x,y;
-    BufferedImage [] imagenes= new BufferedImage[14];
+public class NuezGrande extends Gizantes{
+
     BufferedImage [] imagenes2= new BufferedImage[13];
     BufferedImage [] imagenes3= new BufferedImage[12];
 
-    BufferedImage nuez=null;
-    Plantas p;
-    int frame;
-    int contador=0;
-    int contador2=0;
-    int contador3=0;
-    int vida=400;
+   
 
     NuezGrande(Plantas p,int x,int y){
-        this.p=p;
-        this.x=p.extraxIzq+(x*p.pixel);
-        this.y=p.extraArriba+(y*p.pixel);
-        cargarImagenes();
+        super(p,x,y);
+        vida=400;
+        cargarImagenes2();
     }
 
-    public void cargarImagenes(){
+
+    public void cargarImagenes2() {
         try{
-            imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_00.png"));
-            imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_01.png"));
-            imagenes[2]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_02.png"));
-            imagenes[3]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_03.png"));
-            imagenes[4]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_04.png"));
-            imagenes[5]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_05.png"));
-            imagenes[6]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_06.png"));
-            imagenes[7]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_07.png"));
-            imagenes[8]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_08.png"));
-            imagenes[9]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_09.png"));
-            imagenes[10]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_10.png"));
-            imagenes[11]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_11.png"));
-            imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_12.png"));
-            imagenes[13]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_13.png"));
-   
-       
+         
             imagenes2[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallnutCracked1/frame_00.png"));
             imagenes2[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallnutCracked1/frame_01.png"));
             imagenes2[2]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallnutCracked1/frame_02.png"));
@@ -76,51 +50,52 @@ public class NuezGrande {
            
 
         }catch(IOException e){
-            System.out.println("Error al cargar imagenes de nuez/n"+e.getMessage());
+            System.out.println("Error al cargar imagenes de nuez Grande/n"+e.getMessage());
+        }
+    }
+    @Override
+    public void cargarImagenes(){
+        try{
+            imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_00.png"));
+            imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_01.png"));
+            imagenes[2]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_02.png"));
+            imagenes[3]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_03.png"));
+            imagenes[4]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_04.png"));
+            imagenes[5]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_05.png"));
+            imagenes[6]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_06.png"));
+            imagenes[7]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_07.png"));
+            imagenes[8]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_08.png"));
+            imagenes[9]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_09.png"));
+            imagenes[10]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_10.png"));
+            imagenes[11]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_11.png"));
+            imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_12.png"));
+            imagenes[13]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/TallNut/frame_13.png"));
+   
+        }catch(IOException e){
+            System.out.println("Error al cargar imagenes de nuez Grande/n"+e.getMessage());
         }
     }
 
-    public void draw(Graphics2D g2){
-        cambiarFrame();
-        colision();
-        g2.drawImage(nuez,x,y,(int)(p.pixel/1.5),p.pixel,p);
-        g2.drawString(vida+"", x-20, y-20);
-
-    }
-
-    public void colision(){
-
-        for(zombies zombie:p.vectorZombies){
-            if((this.x)+p.pixel>=zombie.x&&(this.x)+p.pixel<=zombie.x+p.pixel&&this.y>=zombie.y&&this.y<=zombie.y+p.pixel/2){
-                contador3++;
-                if(contador3==30*2.5){//30 frames y 10 son los segundos 
-                    vida-=25;
-                    contador3=0;
-                }
-                
-            }
-            
-        }
-    }
-
+  
+    @Override
     public void cambiarFrame(){
         
         if(vida>300){
             switch(frame){
-                case 0: nuez=imagenes[0]; break;
-                case 1: nuez=imagenes[1]; break;
-                case 2: nuez=imagenes[2]; break;
-                case 3: nuez=imagenes[3]; break;
-                case 4: nuez=imagenes[4]; break;
-                case 5: nuez=imagenes[5]; break;
-                case 6: nuez=imagenes[6]; break;
-                case 7: nuez=imagenes[7]; break;
-                case 8: nuez=imagenes[8]; break;
-                case 9: nuez=imagenes[9]; break;
-                case 10: nuez=imagenes[10]; break;
-                case 11: nuez=imagenes[11]; break;
-                case 12: nuez=imagenes[12]; break;
-                case 13: nuez=imagenes[13]; break;
+                case 0: gisantes=imagenes[0]; break;
+                case 1: gisantes=imagenes[1]; break;
+                case 2: gisantes=imagenes[2]; break;
+                case 3: gisantes=imagenes[3]; break;
+                case 4: gisantes=imagenes[4]; break;
+                case 5: gisantes=imagenes[5]; break;
+                case 6: gisantes=imagenes[6]; break;
+                case 7: gisantes=imagenes[7]; break;
+                case 8: gisantes=imagenes[8]; break;
+                case 9: gisantes=imagenes[9]; break;
+                case 10: gisantes=imagenes[10]; break;
+                case 11: gisantes=imagenes[11]; break;
+                case 12: gisantes=imagenes[12]; break;
+                case 13: gisantes=imagenes[13]; break;
 
                 default: frame=0;
            
@@ -128,37 +103,37 @@ public class NuezGrande {
         }else{
             if(vida>100){
                 switch(frame){
-                    case 0: nuez=imagenes2[0]; break;
-                    case 1: nuez=imagenes2[1]; break;
-                    case 2: nuez=imagenes2[2]; break;
-                    case 3: nuez=imagenes2[3]; break;
-                    case 4: nuez=imagenes2[4]; break;
-                    case 5: nuez=imagenes2[5]; break;
-                    case 6: nuez=imagenes2[6]; break;
-                    case 7: nuez=imagenes2[7]; break;
-                    case 8: nuez=imagenes2[8]; break;
-                    case 9: nuez=imagenes2[9]; break;
-                    case 10: nuez=imagenes2[10]; break;
-                    case 11: nuez=imagenes2[11]; break;
-                    case 12: nuez=imagenes2[12]; break;
+                    case 0: gisantes=imagenes2[0]; break;
+                    case 1: gisantes=imagenes2[1]; break;
+                    case 2: gisantes=imagenes2[2]; break;
+                    case 3: gisantes=imagenes2[3]; break;
+                    case 4: gisantes=imagenes2[4]; break;
+                    case 5: gisantes=imagenes2[5]; break;
+                    case 6: gisantes=imagenes2[6]; break;
+                    case 7: gisantes=imagenes2[7]; break;
+                    case 8: gisantes=imagenes2[8]; break;
+                    case 9: gisantes=imagenes2[9]; break;
+                    case 10: gisantes=imagenes2[10]; break;
+                    case 11: gisantes=imagenes2[11]; break;
+                    case 12: gisantes=imagenes2[12]; break;
                  
                 default: frame=0;
 
                 }
             }else{
                 switch(frame){
-                    case 0: nuez=imagenes3[0]; break;
-                    case 1: nuez=imagenes3[1]; break;
-                    case 2: nuez=imagenes3[2]; break;
-                    case 3: nuez=imagenes3[3]; break;
-                    case 4: nuez=imagenes3[4]; break;
-                    case 5: nuez=imagenes3[5]; break;
-                    case 6: nuez=imagenes3[6]; break;
-                    case 7: nuez=imagenes3[7]; break;
-                    case 8: nuez=imagenes3[8]; break;
-                    case 9: nuez=imagenes3[9]; break;
-                    case 10: nuez=imagenes3[10]; break;
-                    case 11: nuez=imagenes3[11]; break;
+                    case 0: gisantes=imagenes3[0]; break;
+                    case 1: gisantes=imagenes3[1]; break;
+                    case 2: gisantes=imagenes3[2]; break;
+                    case 3: gisantes=imagenes3[3]; break;
+                    case 4: gisantes=imagenes3[4]; break;
+                    case 5: gisantes=imagenes3[5]; break;
+                    case 6: gisantes=imagenes3[6]; break;
+                    case 7: gisantes=imagenes3[7]; break;
+                    case 8: gisantes=imagenes3[8]; break;
+                    case 9: gisantes=imagenes3[9]; break;
+                    case 10: gisantes=imagenes3[10]; break;
+                    case 11: gisantes=imagenes3[11]; break;
                   
                 default: frame=0;
 
@@ -173,12 +148,8 @@ public class NuezGrande {
         }
     }
 
-    public boolean eliminar(MouseEvent e){
-
-        if(e.getX()>=this.x&&e.getX()<=this.x+p.pixel&&e.getY()>=this.y&&e.getY()<=this.y+p.pixel){
-            return true;
-          }
+  @Override
+  public void addBala() {
       
-      return false;
-    }
+  }
 }

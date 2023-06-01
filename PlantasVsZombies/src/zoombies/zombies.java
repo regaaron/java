@@ -48,7 +48,7 @@ public class zombies {
         if(!colision()){
             x-=velocidad;
             sonidoeat.stop();
-            if(x<p.extraxIzq){
+            if(x<p.extraxIzq-200){
                 p.over=true;
                 if(p.tiempo<240)
                      p.tiempo++;
@@ -57,8 +57,6 @@ public class zombies {
         //siempre y cuando no este colisionando osea no este comiendo escoje un frame
         //del zombie moviendoze y lo pone en zombie que es el que se muestra
         cambiarFrame();
-        
-       
     }
 
     public void cambiarFrame(){
