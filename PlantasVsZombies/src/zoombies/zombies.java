@@ -25,6 +25,7 @@ public class zombies {
     int vida = 100;
     int tiempoCongelado = 0;
     boolean realentiza = false;
+    BufferedImage buffer; 
 
     // zombie recibe plantas para la referencia y una posicion en y ya que en x
     // siempre sera hasta el final
@@ -49,20 +50,17 @@ public class zombies {
      * g2.drawString(vida+"", (int) x-20, (int) y-20);
      * }
      */
-    public void draw(Graphics2D g2) {
 
-        // Crear una imagen de buffer
+    public void EfectoLento(){
         try{
 
-            BufferedImage buffer = new BufferedImage(zoombie.getWidth(), zoombie.getHeight(), BufferedImage.TYPE_INT_ARGB);
-     
-        if (realentiza) {
+            buffer=new BufferedImage(zoombie.getWidth(), zoombie.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                tiempoCongelado++;
+                if(tiempoCongelado>=p.FPS*3){
+                    descongelar();
+                }
 
-            tiempoCongelado++;
-            if(tiempoCongelado>=p.FPS*3){
-                descongelar();
-            }
-
+            
             // Obtener las dimensiones de la imagen
             int width = zoombie.getWidth();
             int height = zoombie.getHeight();
@@ -87,15 +85,24 @@ public class zombies {
                 }
             }
 
-            g2.drawImage(buffer, (int) x, (int) y, p.pixel, p.pixel, p);
-        } else {
-            // Dibujar la imagen normal del zombie
-            g2.drawImage(zoombie, (int) x, (int) y, p.pixel, p.pixel, p);
-        } 
+          //  g2.drawImage(buffer, (int) x, (int) y, p.pixel, p.pixel, p);
+        
       }catch(Exception e){
             System.out.println("Error shader");
         }
 
+       
+    }
+    public void draw(Graphics2D g2) {
+
+            if(realentiza){
+                EfectoLento();
+                g2.drawImage(buffer, (int) x, (int) y, p.pixel, p.pixel, p);
+
+            }else{
+                g2.drawImage(zoombie, (int) x, (int) y, p.pixel, p.pixel, p);
+
+            }
         // Dibujar la barra de vida del zombie
         BarraVida(g2);
 
@@ -131,73 +138,28 @@ public class zombies {
     }
 
     public void cambiarFrame() {
-        if (!colision()) {
-            switch (frame) {
-                case 0: zoombie = imagenes[0]; break;
-                case 1: zoombie = imagenes[1]; break;
-                case 2: zoombie = imagenes[2]; break;
-                case 3: zoombie = imagenes[3]; break;
-                case 4: zoombie = imagenes[4]; break;
-                case 5: zoombie = imagenes[5]; break;
-                case 6: zoombie = imagenes[6]; break;
-                case 7: zoombie = imagenes[7]; break;
-                case 8: zoombie = imagenes[8]; break;
-                case 9: zoombie = imagenes[9]; break;
-                case 10: zoombie = imagenes[10]; break;
-                case 11: zoombie = imagenes[11]; break;
-                case 12: zoombie = imagenes[12]; break;
-                case 13: zoombie = imagenes[13]; break;
-                case 14: zoombie = imagenes[14]; break;
-                case 15: zoombie = imagenes[15]; break;
-                case 16: zoombie = imagenes[16]; break;
-                case 17: zoombie = imagenes[17]; break;
-                case 18: zoombie = imagenes[18]; break;
-                case 19: zoombie = imagenes[19]; break;
-                case 20: zoombie = imagenes[20]; break;
-                case 21: zoombie = imagenes[21]; break;
-                case 22: zoombie = imagenes[22]; break;
-                case 23: zoombie = imagenes[23]; break;
-                case 24: zoombie = imagenes[24]; break;
-                case 25: zoombie = imagenes[25]; break;
-                case 26: zoombie = imagenes[26]; break;
-                case 27: zoombie = imagenes[27]; break;
-                case 28: zoombie = imagenes[28]; break;
-                case 29: zoombie = imagenes[29]; break;
-                case 30: zoombie = imagenes[30]; break;
-                default: frame = 0;
-            }
-        } else {
-            switch (frame) {
-                case 0: zoombie = eat[0]; break;
-                case 1: zoombie = eat[1]; break;
-                case 2: zoombie = eat[2]; break;
-                case 3: zoombie = eat[3]; break;
-                case 4: zoombie = eat[4]; break;
-                case 5: zoombie = eat[5]; break;
-                case 6: zoombie = eat[6]; break;
-                case 7: zoombie = eat[7]; break;
-                case 8: zoombie = eat[8]; break;
-                case 9: zoombie = eat[9]; break;
-                case 10: zoombie = eat[10]; break;
-                case 11: zoombie = eat[11]; break;
-                case 12: zoombie = eat[12]; break;
-                case 13: zoombie = eat[13]; break;
-                case 14: zoombie = eat[14]; break;
-                case 15: zoombie = eat[15]; break;
-                case 16: zoombie = eat[16]; break;
-                case 17: zoombie = eat[17]; break;
-                case 18: zoombie = eat[18]; break;
-                case 19: zoombie = eat[19]; break;
-                case 20: zoombie = eat[20]; break;
-                default: frame = 0;
-            }
-        }
         
-        cambio++;
-        if (cambio == 3) {
-            frame++;
-            cambio = 1;
-        }
+            if (!colision()) {
+                if (frame >= 0 && frame <= 30) {
+                    zoombie = imagenes[frame];
+                } else {
+                    frame = 0;
+                    zoombie = imagenes[frame];
+                }
+            } else {
+                if (frame >= 0 && frame <= 20) {
+                    zoombie = eat[frame];
+                } else {
+                    frame = 0;
+                    zoombie = eat[frame];
+                }
+            }
+            
+            cambio++;
+            if (cambio == 3) {
+                frame++;
+                cambio = 1;
+            }
     }
     
 

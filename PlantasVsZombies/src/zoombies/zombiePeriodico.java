@@ -33,10 +33,10 @@ public class zombiePeriodico extends zombies{
             imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_12.png"));
             imagenes[13]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_13.png"));
             imagenes[14]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_14.png"));
-            imagenes[15]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_10.png"));
-            imagenes[16]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_11.png"));
-            imagenes[17]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_12.png"));
-            imagenes[18]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_13.png"));
+            imagenes[15]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_15.png"));
+            imagenes[16]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_16.png"));
+            imagenes[17]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_17.png"));
+            imagenes[18]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_18.png"));
           
             eat[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_00.png"));
             eat[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_01.png"));

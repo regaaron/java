@@ -39,11 +39,13 @@ public class Plantas extends JComponent implements Runnable {
     final int screenX = col * pixel + extraDer + extraxIzq; //tamanio en x en vase a col y pixel + extras
     final int screenY = row * pixel + 100; ////tamanio en y en base a ren pixeles y espacio extra
     final int FPS = 35; //fotogramas por segundo actualiza la pantalla 30 veces cada segundo
+    
     int cargas=0;
     int puntos = 3000; //puntos iniciales
     Thread gameThread;
     BufferedImage []plantas = new BufferedImage[15];
-    BufferedImage back, score, girasol, nuez, gisante1, pala1, pala2,explosion,gameover,doblegizante,triplegizante; //imagenes
+    BufferedImage back,niebla, score, girasol, nuez, gisante1, pala1, pala2,explosion,gameover,doblegizante,triplegizante; //imagenes
+
     Base base; //base de dibujo para no tener sobre saturado el paint
     boolean tag1, tag2, tag3, tag4, tag5, tag6; //boleanos para los tags de las plantas o etiquetas
     int posx, posy; //obtener la posicion en x y y del mouse
@@ -68,6 +70,7 @@ public class Plantas extends JComponent implements Runnable {
     boolean over=false;
     Carta []mazo = new Carta[6];
     Nivel1 lvl1; //objeto que es el nivel o que va ir creadno zombies en tiempo y cantidad especificados
+    boolean boolniebla=false;
     int matriz[][] = {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -450,6 +453,20 @@ public class Plantas extends JComponent implements Runnable {
         if(over){
             g2.drawImage(gameover,((screenX/2)-(pixel)-tiempo),(screenY/2)-tiempo,pixel+(tiempo*2),pixel+(2*tiempo),null);
         }
+
+        if(boolniebla){
+            ActivarNiebla(g2);
+        }
+    }
+
+    public void ActivarNiebla(Graphics2D g2){
+        for (int i = 0; i <= row-1; i++) {
+          
+            for (int j = 5; j <= col-1; j++) {
+                g2.drawImage(niebla, (j * pixel) + extraxIzq, (i * pixel) ,(int)(pixel*2),(int)(pixel*2),null);
+            }
+
+        }
     }
     
     public static void main(String[] args) {
@@ -482,7 +499,7 @@ public class Plantas extends JComponent implements Runnable {
     //meotodo que carga todas las imagenes
     private void cargarImagenes() {
         try {
-            back = ImageIO.read(getClass().getResourceAsStream("/Java/resources/background.png"));
+            back = ImageIO.read(getClass().getResourceAsStream("/Java/resources/background2.png"));
             score = ImageIO.read(getClass().getResourceAsStream("/Java/resources/score.png"));
             pala1 = ImageIO.read(getClass().getResourceAsStream("/Java/resources/pala.png"));
             pala2 = ImageIO.read(getClass().getResourceAsStream("/Java/resources/pala2.png"));
@@ -506,6 +523,7 @@ public class Plantas extends JComponent implements Runnable {
             plantas[12] = explosion;
             plantas[13] = nuez;
             plantas[14] = ImageIO.read(getClass().getResourceAsStream("/imagenes/NuezGrande.png"));
+            niebla=ImageIO.read(getClass().getResourceAsStream("/Java/resources/niebla.png"));
         } catch (IOException ex) {
             Logger.getLogger(Plantas.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getLocalizedMessage());

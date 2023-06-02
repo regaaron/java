@@ -88,7 +88,7 @@ public class Gizantes {
     public void colision(){
 
         for(zombies zombie:p.vectorZombies){
-            if((this.x)+p.pixel>=zombie.x&&(this.x)+p.pixel<=zombie.x+p.pixel&&this.y>=zombie.y&&this.y<=zombie.y+p.pixel/2){
+            if((this.x)+p.pixel>=zombie.x+30&&(this.x)+p.pixel<=zombie.x+p.pixel&&this.y>=zombie.y&&this.y<=zombie.y+p.pixel/2){
                 contador3++;
                 if(contador3>=30*2){//30 frames y 10 son los segundos 
                     vida-=25;
