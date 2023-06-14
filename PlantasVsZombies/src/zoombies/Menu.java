@@ -99,14 +99,14 @@ public class Menu extends JComponent {
                 // jf.setLocationRelativeTo(null);
                 // jf.setResizable(false);
                
-                Cartas demo1 = new Cartas(jf2);
+                SelecNivel demo1 = new SelecNivel(jf2);
                 jf2.getContentPane().add(demo1);
                 menusound.stop();
                 // jf.getContentPane().add(demo1);
                 jf2.pack();
                 jf2.setVisible(true);
-                demo1.cicloPrincipalJuego();
-        jf.dispose();
+            
+                jf.dispose();
     }
 
     @Override

@@ -46,7 +46,6 @@ public class DobleGizantes extends Gizantes{
             imagenes[14]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Repeater/frame_14.png"));
            
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
        

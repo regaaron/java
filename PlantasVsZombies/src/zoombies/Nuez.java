@@ -64,7 +64,6 @@ public class Nuez extends Gizantes{
             imagenes2[14]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/wallnut2/frame_14.png"));
         
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("Error al cargar imagenes 2");
         }
     }

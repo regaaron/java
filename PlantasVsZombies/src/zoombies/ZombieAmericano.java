@@ -16,7 +16,6 @@ public class ZombieAmericano extends zombies{
 
     @Override
     public void cargarImagenes() {
-        // TODO Auto-generated method stub
         try {
             imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/football_zombie/frame_00.png"));
             imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/football_zombie/frame_01.png"));
@@ -42,7 +41,6 @@ public class ZombieAmericano extends zombies{
             eat[9]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/football_zombie_eat/frame_09.png"));
        
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -59,8 +57,6 @@ public class ZombieAmericano extends zombies{
 
     @Override
     public void cambiarFrame() {
-        // TODO Auto-generated method stub
-        
         if(!colision()){
             switch(frame){
                 case 0: zoombie=imagenes[0]; break;
@@ -94,12 +90,13 @@ public class ZombieAmericano extends zombies{
                 default: frame=0;
             }
         }
+        frame++;
             //aunmentamos el frame para cambiar de imagen
-            cambio++;
-            if(cambio==5){
-                frame++;
-                cambio=1;
-            }
+            // cambio++;
+            // if(cambio==5){
+            //     frame++;
+            //     cambio=1;
+            // }
     }
 
     @Override

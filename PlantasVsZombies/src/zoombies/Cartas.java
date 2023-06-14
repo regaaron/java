@@ -3,7 +3,6 @@ package zoombies;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -31,7 +30,8 @@ public class Cartas extends JComponent implements Runnable{
     public int []posicionzombies = new int[6];
     boolean activoszombies,activosplantas;
     final int FPS = 30;
-    
+    int nivel=0;
+    int ecenario=0;
     BufferedImage back,continuar,mazo,marco;
     BufferedImage []plantas = new BufferedImage[15];
     BufferedImage []zombies = new BufferedImage[15];
@@ -52,11 +52,13 @@ public class Cartas extends JComponent implements Runnable{
     
     Thread gameThread;
     //Constructor por defecto; asignamos todos los valores inciales de las cartas de los dos jugadores
-    public Cartas(JFrame jf) throws Exception{
+    public Cartas(JFrame jf,int nivel,int ecenario) throws Exception{
         //Ventana desplegable para mostrar el apartado de cartas y poder seleccionar las 6 cartas
         this.setVisible(true);
         this.setPreferredSize(new Dimension(ANCHO,ALTO));
         this.jf = jf;
+        this.nivel=nivel;
+        this.ecenario=ecenario;
         activoszombies = false;
         activosplantas = false;
         for(int i = 0; i < 15; i++){
@@ -170,7 +172,6 @@ public class Cartas extends JComponent implements Runnable{
         g.drawImage(back, 0, 0,ANCHO,ALTO, this);
         activoszombies = false;
         activosplantas = false;
-        Graphics2D g2d = (Graphics2D) g;
         //Se crean los cuadros donde van las plantas y los zombies
         g.setColor(Color.black);
         g.drawImage(marco,pixeles_costados, pixeles_costados, (ANCHO/2)-30, 130, this);
@@ -292,7 +293,7 @@ public class Cartas extends JComponent implements Runnable{
                 // jf.setLocationRelativeTo(null);
                 // jf.setResizable(false);
                
-                Plantas demo2 = new Plantas(mazoplantas);
+                Plantas demo2 = new Plantas(mazoplantas,nivel,ecenario);
                 jf2.getContentPane().add(demo2);
 
                 // jf.getContentPane().add(demo1);

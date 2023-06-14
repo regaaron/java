@@ -16,7 +16,6 @@ public class zombiePeriodico extends zombies{
      
     @Override
     public void cargarImagenes() {
-        // TODO Auto-generated method stub
         try {
             imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_00.png"));
             imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_01.png"));
@@ -48,7 +47,6 @@ public class zombiePeriodico extends zombies{
             eat[7]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/newspaper_zombie/frame_07.png"));
           
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -77,8 +75,6 @@ public class zombiePeriodico extends zombies{
     }
     @Override
     public void cambiarFrame() {
-        // TODO Auto-generated method stub
-        
         if(!colision()){
             switch(frame){
                 case 0: zoombie=imagenes[0]; break;

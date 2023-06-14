@@ -10,7 +10,6 @@ public class Cactus extends Gizantes{
     
     @Override
     public void addBala() {
-        // TODO Auto-generated method stub
         vectorBalas.add(new Balas(p, x, y, 1));
     }
 
@@ -33,7 +32,6 @@ public class Cactus extends Gizantes{
 
         
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
        

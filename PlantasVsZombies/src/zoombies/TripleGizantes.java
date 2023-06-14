@@ -66,7 +66,6 @@ public class TripleGizantes extends Gizantes{
             imagenes[11]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_12.png"));
             imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/Triple/frame_13.png"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
        

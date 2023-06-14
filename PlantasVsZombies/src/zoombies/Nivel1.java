@@ -1,6 +1,6 @@
 package zoombies;
 
-import java.util.ArrayList;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 //clase del nivel enbase a un tiempo iremos poniendo zombies en ciertas posiciones

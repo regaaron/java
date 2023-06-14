@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class Gizantes {
     int x,y;
@@ -63,7 +62,6 @@ public class Gizantes {
             imagenes[12]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/peashooter/frame_12.png"));
            
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
        

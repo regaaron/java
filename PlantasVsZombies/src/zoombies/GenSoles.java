@@ -1,6 +1,6 @@
 package zoombies;
 
-import java.util.ArrayList;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 //esto es una clase con un hilo que genera soles cada cierto tiempo

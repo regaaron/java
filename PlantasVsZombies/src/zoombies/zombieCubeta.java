@@ -15,7 +15,7 @@ public class zombieCubeta extends zombies{
 
     @Override
     public void cargarImagenes() {
-        // TODO Auto-generated method stub
+
         try {
             imagenes[0]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/bucket_head_zombie/frame_00.png"));
             imagenes[1]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/bucket_head_zombie/frame_01.png"));
@@ -46,7 +46,6 @@ public class zombieCubeta extends zombies{
             eat[10]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/bucket_head_zombie_eat/frame_10.png"));
        
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -63,8 +62,6 @@ public class zombieCubeta extends zombies{
     }
     @Override
     public void cambiarFrame() {
-        // TODO Auto-generated method stub
-        
         if(!colision()){
             switch(frame){
                 case 0: zoombie=imagenes[0]; break;

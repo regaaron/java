@@ -30,7 +30,6 @@ public class gisanteHielo extends Gizantes{
             imagenes[13]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/snowpea/frame_13.png"));
             imagenes[14]=ImageIO.read(getClass().getResourceAsStream("/Java/imagenes/snowpea/frame_14.png"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
